@@ -1,6 +1,6 @@
 class Feed < ActiveRecord::Base
   
-  attr_accessible :url, :category
+  attr_accessible :url, :category, :content
   
   belongs_to :category, class_name: 'FeedCategory'
   
@@ -21,9 +21,8 @@ class Feed < ActiveRecord::Base
   end
   
   def fetch!
-    self.content = Feedzirra::Feed.fetch_raw(self.url)
+    self.update_attribute(:content, Feedzirra::Feed.fetch_raw(self.url))
     logger.info "Feed '#{self.slug}' updated"
-    self.save
   end
   
   def update!
