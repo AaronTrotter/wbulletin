@@ -2,8 +2,6 @@ class Feed < ActiveRecord::Base
   
   attr_accessible :content, :slug, :url
   
-  after_initialize :update!
-  
   def parsed
     @parsed ||= Feedzirra::Feed.parse(self.content)
   end
