@@ -4,6 +4,7 @@ class CreateFeeds < ActiveRecord::Migration
       t.string :url
       t.string :slug
       t.text :content
+      t.integer :category_id
 
       t.timestamps
     end

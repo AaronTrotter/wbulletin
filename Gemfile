@@ -32,6 +32,9 @@ gem 'feedzirra', :require => 'feedzirra', :git => 'git://github.com/lumpidu/feed
 gem 'summarize'
 gem 'sanitize'
 gem 'redcarpet'
+gem 'simple-navigation'
+gem 'awesome_nested_set'
+gem 'friendly_id'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

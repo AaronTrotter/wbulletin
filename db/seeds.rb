@@ -6,4 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Feed.create(:slug => "popsci", :url => "http://www.popsci.com/rss.xml")
+tech = FeedCategory.create name: "Technology"
+code = FeedCategory.create name: "Programming", parent: tech
+
+science = FeedCategory.create name: "Science"
+physics = FeedCategory.create name: "Physics", parent: science
+
+popsci  = Feed.create url: "http://www.popsci.com/rss.xml", category: physics
+nettuts = Feed.create url: "http://net.tutsplus.com/feed",  category: code

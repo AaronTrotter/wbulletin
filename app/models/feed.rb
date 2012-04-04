@@ -1,8 +1,14 @@
 class Feed < ActiveRecord::Base
   
-  attr_accessible :content, :slug, :url
+  attr_accessible :url, :category
+  
+  belongs_to :category, class_name: 'FeedCategory'
   
   after_initialize :update!
+  after_create     :update!
+  
+  extend FriendlyId
+  friendly_id :title, :use => :slugged
   
   def parsed
     @parsed ||= Feedzirra::Feed.parse(self.content)
@@ -21,15 +27,11 @@ class Feed < ActiveRecord::Base
   end
   
   def update!
-    if updated_at < 15.minutes.ago || content.blank?
+    if content.blank? || self.updated_at < 15.minutes.ago
       self.fetch!
     else
       return false
     end
-  end
-  
-  def to_param
-    self.slug
   end
   
 end
