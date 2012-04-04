@@ -1,17 +1,7 @@
 <div class="row-fluid">
   <div class="span3">
     <div class="well sidebar-nav">
-      <ul class="nav nav-list">
-        <li class="nav-header">Gaming</li>
-        <li class="active"><a href="#">Latest Releases</a></li>
-        <li><a href="#">Reviews</a></li>
-        <li><a href="#">Previews</a></li>
-        <li class="nav-header">Technology</li>
-        <li><a href="#">Hardware</a></li>
-        <li><a href="#">Software</a></li>
-        <li class="nav-header">Science</li>
-        <li><a href="#">Physics</a></li>
-      </ul>
+      <%= render_navigation :context => :category, :expand_all => :true %>
     </div>
   </div>
   <div class="span9">

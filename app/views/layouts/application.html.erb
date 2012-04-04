@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Wbulletin</title>
+  <title>WBulletin</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -16,13 +16,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </a>
-        <a class="brand" href="#">Wolf Bulletin</a>
+        <%= link_to "Wolf Bulletin", root_path, :class => 'brand' %>
         <div class="nav-collapse">
-          <ul class="nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
+          <%= render_navigation :expand_all => true %>
           <p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>
         </div>
       </div>
