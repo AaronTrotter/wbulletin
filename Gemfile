@@ -28,6 +28,10 @@ group :heroku do
 end
 
 gem 'jquery-rails'
+gem 'feedzirra', :require => 'feedzirra', :git => 'git://github.com/lumpidu/feedzirra.git'
+gem 'summarize'
+gem 'sanitize'
+gem 'redcarpet'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
