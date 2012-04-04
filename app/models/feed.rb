@@ -2,6 +2,8 @@ class Feed < ActiveRecord::Base
   
   attr_accessible :content, :slug, :url
   
+  after_initialize :update!
+  
   def parsed
     @parsed ||= Feedzirra::Feed.parse(self.content)
   end
@@ -19,7 +21,7 @@ class Feed < ActiveRecord::Base
   end
   
   def update!
-    if updated_at < 15.minutes.ago
+    if updated_at < 15.minutes.ago || content.blank?
       self.fetch!
     else
       return false
