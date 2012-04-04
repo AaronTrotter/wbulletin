@@ -2,16 +2,20 @@
   <h1><%= @feed.title %></h1>
   <h5>Updated: <%= @feed.updated_at %></h5>
 </div>
+<div class="row">
+  <div class="span6">
+    <h3><%= pluralize @feed.entries.size, 'Article' %></h3>
+  </div>
+</div>
+<hr />
 <%- @feed.entries.each_slice(2) do |entries| %>
   <div class="row">
     <%- entries.each do |entry| %>
       <div class="span6">
         <div class="well">
-          <%= content_tag :h3, truncate(entry.title, :length => 45, :omission => '...'), :title => entry.title %>
-          <%= feed_entry_summary(entry).html_safe %>
-          <p>
-            <a class="btn" href="#">Read »</a>
-          </p>
+          <%= content_tag :h3, :title => entry.title do %>
+            <%= link_to truncate(entry.title, :length => 45, :omission => '...'), entry.url %>
+          <%- end -%>
         </div>
       </div>
     <%- end%>

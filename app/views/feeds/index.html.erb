@@ -1,0 +1,5 @@
+<%- @feeds.each do |feed| %>
+  <div class="row well">
+    <h2><%= link_to feed.title, feed %></h2>
+  </div>
+<%- end %>

@@ -28,4 +28,8 @@ class Feed < ActiveRecord::Base
     end
   end
   
+  def to_param
+    self.slug
+  end
+  
 end
