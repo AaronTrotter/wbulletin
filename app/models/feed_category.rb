@@ -2,7 +2,9 @@ class FeedCategory < ActiveRecord::Base
   
   acts_as_nested_set
   
-  has_many :feeds
+  def feeds
+    Feed.where(:category_id => self.self_and_descendants.map(&:id))
+  end
   
   attr_protected :rgt, :left
   

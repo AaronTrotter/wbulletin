@@ -15,6 +15,8 @@ Wbulletin::Application.routes.draw do
 
   resources :feeds
   
+  match 'categories/:id' => 'feed_categories#show', :as => :category
+  
   # Sample resource route with options:
   #   resources :products do
   #     member do

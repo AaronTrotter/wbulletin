@@ -1,0 +1,13 @@
+<div class="row">
+  <div class="span12">
+    <h1><%= @category.name %></h1>
+  </div>
+</div>
+<hr />
+<%- @category.feeds.each do |feed| -%>
+<div class="row">
+  <div class="span12 well">
+    <h3><%= link_to feed.title, feed_path(feed) %></h3>
+  </div>
+</div>
+<%- end -%>
