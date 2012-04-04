@@ -12,12 +12,15 @@ class Feed < ActiveRecord::Base
     all.each(&:update!)
   end
   
+  def fetch!
+    self.content = Feedzirra::Feed.fetch_raw(self.url)
+    logger.info "Feed '#{self.slug}' updated"
+    self.save
+  end
+  
   def update!
     if updated_at < 15.minutes.ago
-      self.content = Feedzirra::Feed.fetch_raw(self.url)
-      logger.info "Feed '#{self.slug}' updated"
-      self.save
-      return true
+      self.fetch!
     else
       return false
     end
